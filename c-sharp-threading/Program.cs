@@ -2,7 +2,7 @@
 {
     static int value = 10;
     static bool IsLocked=false;
-     static async Task Main(string[] args)
+    private static void Main(string[] args)
     {
         /*
         Thread thread = new Thread(new ThreadStart(doSomething));
@@ -19,18 +19,18 @@
         
 
         Console.WriteLine("Main block");//this will execute at the end 
-        
+        */
         Thread thread1 = new Thread(incvalue);
         Thread thread2 = new Thread(incvalue);
         thread1.Start();
         thread2.Start();
-       // thread1.Join();
+        //thread1.Join();
         Console.WriteLine(value);
-        */
+        
 
-        int result = await add(2, 4);
-        Console.WriteLine(result);
-        Console.WriteLine("hi");
+       // int result = await add(2, 4);
+       // Console.WriteLine(result);
+        //Console.WriteLine("hi");
 
 
 
@@ -49,7 +49,7 @@
   static void incvalue()
 
     {
-        if (IsLocked)
+        if (!IsLocked)
         {
             IsLocked = true;
 
