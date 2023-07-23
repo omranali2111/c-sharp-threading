@@ -8,9 +8,12 @@
         for(int i = 0; i < 10; i++)
         {
             Console.WriteLine($"main thread:{i}");
-            Thread.Sleep(100);
+            Thread.Sleep(10);
         }
 
+        thread.Join();//it will wait other threads to fully execute 
+
+        Console.WriteLine("Main block");//this will execute at the end 
             
     }
 
