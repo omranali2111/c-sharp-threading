@@ -1,6 +1,7 @@
 ﻿internal class Program
 {
     static int value = 10;
+    static bool IsLocked=false;
     private static void Main(string[] args)
     {
         /*
@@ -23,7 +24,7 @@
         Thread thread2 = new Thread(incvalue);
         thread1.Start();
         thread2.Start();
-        thread2.Join();
+       // thread1.Join();
         Console.WriteLine(value);
 
 
@@ -41,10 +42,17 @@
     }
 
   static void incvalue()
+
     {
-        for( int i = 0;i < 10; i++)
+        if (IsLocked)
         {
-           value++;
+            IsLocked = true;
+
+            for (int i = 0; i < 10; i++)
+            {
+                value++;
+            }
+            IsLocked = false;
         }
     }
 
